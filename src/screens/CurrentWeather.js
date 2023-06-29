@@ -2,6 +2,7 @@ import React from "react"
 import {View, Text, StyleSheet} from 'react-native'
 import { Feather } from '@expo/vector-icons';
 import RowText from "../components/RowText";
+import { weatherType } from "../utils/WeatherType";
 
 const CurrentWeather = () => {
 
@@ -45,7 +46,7 @@ const CurrentWeather = () => {
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: 'pink',
     paddingTop: 32
   },
   container: {
