@@ -1,8 +1,9 @@
 import React from "react";
 import { ImageBackground, StatusBar, StyleSheet, Text, View } from 'react-native';
 import IconText from "../components/IconText";
+import moment from 'moment';
 
-const City = () => {
+const City = ({weatherData}) => {
 
     const {
         container,
@@ -17,15 +18,16 @@ const City = () => {
         riseSetText
     } = styles;
 
+    const {name, country, population, sunrise, sunset} = weatherData
 
     return (
         <View style={container}>
             <ImageBackground source={require("../../assets/city-background.jpg")} style={imageLayout}>
-                <Text style={[cityName, cityText]}>London</Text>
-                <Text style={[countryName, cityText]}>UK</Text>
+                <Text style={[cityName, cityText]}>{name}</Text>
+                <Text style={[countryName, cityText]}>{country}</Text>
                 <View style={[populationWrapper, rowLayout]}>
                     <IconText
-                        bodyText={"8000"}
+                        bodyText={population}
                         bodyTextStyles={populationText}
                         iconColor={"red"}
                         iconName={"user"}
@@ -33,13 +35,13 @@ const City = () => {
                 </View>
                 <View style={[riseSetWrapper, rowLayout]}>
                     <IconText
-                        bodyText={"10:45:50am"}
+                        bodyText={moment(sunrise).format("hh:mm a")}
                         bodyTextStyles={riseSetText}
                         iconColor={"white"}
                         iconName={"sunrise"}
                     />
                     <IconText
-                        bodyText={"17:28:15pm"}
+                        bodyText={moment(sunset).format("hh:mm a")}
                         bodyTextStyles={riseSetText}
                         iconColor={"white"}
                         iconName={"sunset"}
