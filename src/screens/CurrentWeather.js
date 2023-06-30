@@ -23,15 +23,15 @@ const CurrentWeather = ({weatherData}) => {
     weather
   } = weatherData;
 
-  const weatherCondition = weather[0].main
+  const weatherCondition = weather[0]?.main
 
 
   return (
-    <View style={[wrapper, { backgroundColor: weatherType[weatherCondition].backgroundColor}]}>
+    <View style={[wrapper, { backgroundColor: weatherType[weatherCondition]?.backgroundColor}]}>
       <View style={container}>
-        <Feather name={weatherType[weatherCondition].icon} size={100} color="white" />
-        <Text style={tempStyle}>{temp}</Text>
-        <Text style={feels}>{`Feels like ${feels_like}`}</Text>
+        <Feather name={weatherType[weatherCondition]?.icon} size={100} color="white" />
+        <Text style={tempStyle}>{temp}°</Text>
+        <Text style={feels}>{`Feels like ${feels_like}°`}</Text>
         <RowText
           messageOne={`High: ${temp_max}° `}
           messageTwo={`Low: ${temp_min}°`}
@@ -41,8 +41,8 @@ const CurrentWeather = ({weatherData}) => {
         />
       </View>
       <RowText
-          messageOne={weather[0].description}
-          messageTwo={weatherType[weatherCondition].message}
+          messageOne={weather[0]?.description}
+          messageTwo={weatherType[weatherCondition]?.message}
           containerStyle={bodyWrapper}
           messageOneStyle={description}
           messageTwoStyle={message}
@@ -84,10 +84,10 @@ const styles = StyleSheet.create({
     marginBottom: 32
   },
   description: {
-    fontSize: 48,
+    fontSize: 43,
   },
   message: {
-    fontSize: 30,
+    fontSize: 25,
   }
 })
 
